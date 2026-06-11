@@ -41,6 +41,7 @@ import org.schabi.newpipe.extractor.utils.JsonUtils;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -285,7 +286,8 @@ public class YoutubeMixPlaylistExtractor extends PlaylistExtractor {
                 .map(imageSuffix -> new Image(baseUrl + imageSuffix.getSuffix(),
                         imageSuffix.getHeight(), imageSuffix.getWidth(),
                         imageSuffix.getResolutionLevel()))
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        Collections::unmodifiableList));
     }
 
     @Nonnull

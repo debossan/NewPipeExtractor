@@ -71,7 +71,8 @@ public class BandcampChannelExtractor extends ChannelExtractor {
                     .map(url -> new Image(
                             replaceHttpWithHttps(url), HEIGHT_UNKNOWN, WIDTH_UNKNOWN,
                             ResolutionLevel.UNKNOWN))
-                    .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        Collections::unmodifiableList));
 
         } catch (final IOException | ReCaptchaException e) {
             throw new ParsingException("Could not download artist web site", e);
