@@ -299,6 +299,7 @@ public final class PeertubeParsingHelper {
                 .filter(image -> !isNullOrEmpty(image.getString("path")))
                 .map(image -> new Image(baseUrl + image.getString("path"), HEIGHT_UNKNOWN,
                         image.getInt("width", WIDTH_UNKNOWN), ResolutionLevel.UNKNOWN))
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        Collections::unmodifiableList));
     }
 }

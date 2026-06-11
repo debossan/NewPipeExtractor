@@ -66,6 +66,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -977,7 +978,8 @@ public final class YoutubeParsingHelper {
                             thumbnail.getInt("width", Image.WIDTH_UNKNOWN),
                             ResolutionLevel.fromHeight(height));
                 })
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        Collections::unmodifiableList));
     }
 
     @Nonnull

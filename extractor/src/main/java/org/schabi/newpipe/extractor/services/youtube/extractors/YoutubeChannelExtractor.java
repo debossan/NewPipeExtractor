@@ -496,6 +496,7 @@ public class YoutubeChannelExtractor extends ChannelExtractor {
                 .stream()
                 .filter(String.class::isInstance)
                 .map(String.class::cast)
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        Collections::unmodifiableList));
     }
 }
