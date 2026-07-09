@@ -14,7 +14,7 @@ public class pt_PT extends PatternsHolder {
             HOURS    /**/ = {"hora", "horas"},
             DAYS     /**/ = {"dia", "dias"},
             WEEKS    /**/ = {"semana", "semanas"},
-            MONTHS   /**/ = {"meses", "mês"},
+            MONTHS   /**/ = {"mês", "meses"},
             YEARS    /**/ = {"ano", "anos"};
 
     private static final pt_PT INSTANCE = new pt_PT();
